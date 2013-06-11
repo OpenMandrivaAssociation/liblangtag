@@ -63,14 +63,8 @@ developing applications that use %{name}.
 	--disable-static \
 	--enable-shared \
 	--disable-introspection
-#sed -i \
-#    -e 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' \
-#    -e 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' \
-#    libtool
-%make
-# V=1 \
-#    LD_LIBRARY_PATH=`pwd`/liblangtag/.libs${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 
+%make
 
 %install
 %makeinstall_std

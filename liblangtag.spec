@@ -1,19 +1,22 @@
-Name: liblangtag
-Version: 0.4.0
-Release: %mkrel 2
-Summary: An interface library to access tags for identifying languages
+%define major	1
+%define libname	%mklibname langtag %{major}
+%define devname	%mklibname langtag -d
 
-Group:   System/Internationalization
-License: LGPLv3+
-URL: https://github.com/tagoh/liblangtag/
-Source0: https://github.com/downloads/tagoh/%{name}/%{name}-%{version}.tar.bz2
-Patch0: 0001-Fix-build-issues-with-MSVC.patch
-Patch1: fix-format-not-a-string-literal.diff
-Patch2: fix-linking.diff
+Summary:	An interface library to access tags for identifying languages
+Name:		liblangtag
+Version:	0.4.0
+Release:	1
+Group:		System/Internationalization
+License:	LGPLv3+
+Url:		https://github.com/tagoh/liblangtag/
+Source0:	https://github.com/downloads/tagoh/%{name}/%{name}-%{version}.tar.bz2
+Patch0:		0001-Fix-build-issues-with-MSVC.patch
+Patch1:		fix-format-not-a-string-literal.diff
+Patch2:		fix-linking.diff
 
-BuildRequires: gtk-doc
-BuildRequires: libtool
-BuildRequires: libxml2-devel
+BuildRequires:	gtk-doc
+BuildRequires:	libtool
+BuildRequires:	pkgconfig(libxml-2.0)
 
 %description
 %{name} is an interface library to access tags for identifying
@@ -34,71 +37,54 @@ Features:
   - matching
   - canonicalizing
 
-%package devel
-Summary: Development files for %{name}
-Group: Development/C
-Requires: %{name}%{?_isa} = %{version}-%{release}
+%package -n %{libname}
+Summary:	An interface library to access tags for identifying languages
+Group:		System/Libraries
 
-%description devel
-The %{name}-devel package contains libraries and header files for
+%description -n %{libname}
+%{name} is an interface library to access tags for identifying
+languages.
+
+%package -n %{devname}
+Summary:	Development files for %{name}
+Group:		Development/C
+Requires:	%{libname} = %{version}-%{release}
+
+%description -n %{devname}
+This package contains libraries and header files for
 developing applications that use %{name}.
-
-%package doc
-Summary: Documentation of %{name} API
-Group: Documentation
-BuildArch: noarch
-
-%description doc
-The %{name}-doc package contains documentation files for %{name}.
-
 
 %prep
 %setup -q
 %apply_patches
 
-
 %build
-%configure --disable-static --enable-shared --disable-introspection
-sed -i \
-    -e 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' \
-    -e 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' \
-    libtool
-%make V=1 \
-    LD_LIBRARY_PATH=`pwd`/liblangtag/.libs${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+%configure2_5x \
+	--disable-static \
+	--enable-shared \
+	--disable-introspection
+#sed -i \
+#    -e 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' \
+#    -e 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' \
+#    libtool
+%make
+# V=1 \
+#    LD_LIBRARY_PATH=`pwd`/liblangtag/.libs${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 
 
 %install
 %makeinstall_std
-rm -f %{buildroot}/%{_libdir}/*.la %{buildroot}/%{_libdir}/%{name}/*.la
 
-%files
+%files -n %{libname}
 %doc AUTHORS COPYING NEWS README
-%{_libdir}/%{name}.so.*
+%{_libdir}/%{name}.so.%{major}*
 %{_libdir}/%{name}/*.so
 %{_datadir}/%{name}
 
-%files devel
+%files -n %{devname}
+%doc COPYING
+%doc %{_datadir}/gtk-doc/html/%{name}
 %{_includedir}/%{name}
 %{_libdir}/%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
-
-%files doc
-%doc COPYING
-%{_datadir}/gtk-doc/html/%{name}
-
-
-
-
-%changelog
-
-* Sat Jan 12 2013 umeabot <umeabot> 0.4.0-2.mga3
-+ Revision: 357623
-- Mass Rebuild - https://wiki.mageia.org/en/Feature:Mageia3MassRebuild
-
-* Mon Dec 17 2012 tv <tv> 0.4.0-1.mga3
-+ Revision: 331952
-- fix group
-- patch 2: fix linking
-- fix format litteral errors
-- imported package liblangtag
 

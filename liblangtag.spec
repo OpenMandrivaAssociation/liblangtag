@@ -5,7 +5,7 @@
 Summary:	An interface library to access tags for identifying languages
 Name:		liblangtag
 Version:	0.4.0
-Release:	6
+Release:	7
 Group:		System/Internationalization
 License:	LGPLv3+
 Url:		https://github.com/tagoh/liblangtag/

@@ -8,8 +8,8 @@ Version:	0.5.6
 Release:	1
 Group:		System/Internationalization
 License:	LGPLv3+
-Url:		https://github.com/tagoh/liblangtag/
-Source0:	https://github.com/downloads/tagoh/%{name}/%{name}-%{version}.tar.bz2
+Url:		http://tagoh.bitbucket.org/liblangtag/
+Source0:	https://bitbucket.org/tagoh/liblangtag/downloads/%{name}-%{version}.tar.bz2
 Patch2:		fix-linking.diff
 
 BuildRequires:	gtk-doc

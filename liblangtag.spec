@@ -4,14 +4,12 @@
 
 Summary:	An interface library to access tags for identifying languages
 Name:		liblangtag
-Version:	0.4.0
-Release:	2
+Version:	0.5.4
+Release:	0.1
 Group:		System/Internationalization
 License:	LGPLv3+
 Url:		https://github.com/tagoh/liblangtag/
 Source0:	https://github.com/downloads/tagoh/%{name}/%{name}-%{version}.tar.bz2
-Patch0:		0001-Fix-build-issues-with-MSVC.patch
-Patch1:		fix-format-not-a-string-literal.diff
 Patch2:		fix-linking.diff
 
 BuildRequires:	gtk-doc

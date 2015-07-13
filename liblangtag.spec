@@ -15,6 +15,7 @@ Patch2:		fix-linking.diff
 BuildRequires:	gtk-doc
 BuildRequires:	libtool
 BuildRequires:	pkgconfig(libxml-2.0)
+BuildRequires:	pkgconfig(gobject-introspection-1.0)
 
 %description
 %{name} is an interface library to access tags for identifying

@@ -1,3 +1,5 @@
+%define _disable_rebuild_configure 1
+
 %define major	1
 %define libname	%mklibname langtag %{major}
 %define devname	%mklibname langtag -d

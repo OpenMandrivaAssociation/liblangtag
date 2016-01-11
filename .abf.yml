@@ -1,5 +1,6 @@
 removed_sources:
   liblangtag-0.5.4.tar.bz2: 59255fb839b83f11b8ee7fcd4585654b992b8e81
   liblangtag-0.5.6.tar.bz2: a0428d9c1a7f51295b6afa4b8146992712b1ff6b
-sources:
   liblangtag-0.5.7.tar.bz2: 825c5f1cec818e1c8c2de6d87f6beb9d7b22e95d
+sources:
+  liblangtag-0.5.8.tar.bz2: a217fc028c21618c3df7407165dd9cc53ab93a1e

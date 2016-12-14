@@ -6,7 +6,7 @@
 
 Summary:	An interface library to access tags for identifying languages
 Name:		liblangtag
-Version:	0.5.8
+Version:	0.6.2
 Release:	1
 Group:		System/Internationalization
 License:	LGPLv3+

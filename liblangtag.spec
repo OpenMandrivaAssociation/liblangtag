@@ -10,7 +10,7 @@ Version:	0.6.7
 Release:	1
 Group:		System/Internationalization
 License:	LGPLv3+
-Url:		http://tagoh.bitbucket.org/liblangtag/
+Url:		https://tagoh.bitbucket.org/liblangtag/
 Source0:	https://bitbucket.org/tagoh/liblangtag/downloads/%{name}-%{version}.tar.bz2
 Patch2:		fix-linking.diff
 
